@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whack-a-Mole</title>
+    <link rel="stylesheet" href="./src/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <div class="score-item"> 
+        <p>score: <span id="score">0</span></p>
+      </div>
+      <h1 id="title">Club-a-Mole</h1>
+      <div class="score-item">
+        <p> <span id="timer" class>10  </span>  seconds!</p>
+      </div>
+    </header>
+    <main>
+        <section id="middleInfo">
+          <div><span id="difficulty"></span>
+            <h2>choose your mood:</h2>
+            <button class="difficulty-btn easy">mellow</button>
+            <button class="difficulty-btn normal">wild</button>
+            <button class="difficulty-btn hard">rampage</button>
+          </div>
+          
+            <h2>click start to play!</h2>
+            <button id="start">START GAME</button>
+        </section>
+        
+      <div class="grid">
+        <div id="hole0" class="hole">
+          <div id="mole0" class="mole"></div>
+        </div>
+        <div id="hole1" class="hole">
+          <div id="mole1" class="mole"></div>
+        </div>
+        <div id="hole2" class="hole">
+          <div id="mole2" class="mole"></div>
+        </div>
+        <div id="hole3" class="hole">
+          <div id="mole3" class="mole"></div>
+        </div>
+        <div id="hole4" class="hole">
+          <div id="mole4" class="mole"></div>
+        </div>
+        <div id="hole5" class="hole">
+          <div id="mole5" class="mole"></div>
+        </div>
+        <div id="hole6" class="hole">
+          <div id="mole6" class="mole"></div>
+        </div>
+        <div id="hole7" class="hole">
+          <div id="mole7" class="mole"></div>
+        </div>
+        <div id="hole8" class="hole">
+          <div id="mole8" class="mole"></div>
+        </div>
+      </div>
+    </main>
+    <script src="./src/index.js"></script>
+  </body>
+</html>
