@@ -1,4 +1,12 @@
 # Web Development Certificate Capstone: Whack-a-Mole!
+Natalie Rees - Thinkful WebDev Final Capstone Project.
+I've udpated the Whack-A-Mole game to include a vibrant new title, a brighter theme and background, updated prompts on the start button,
+new difficulty selection options, and the option to click each mole more than once to get multiple points per mole! 
+Mash away!!
+
+******************************************************************************************************
+
+Below steps were used to complete implementation of this project. Please ignore! 
 
 A local game development studio has decided to create a new game that's based on Whack-A-Mole. If you've ever been to an arcade, you have probably seen or played Whack-A-Mole. It's a game in which a player uses a mallet to hit toy moles, which appear at random, back into their holes.
 

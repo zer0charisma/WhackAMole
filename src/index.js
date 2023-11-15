@@ -1,9 +1,8 @@
 const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const startButton = document.querySelector('#start');
-// TODO: Add the missing query selectors:
-const score = document.getElementById('score'); // Use querySelector() to get the score element
-const timerDisplay = document.getElementById('timer'); // use querySelector() to get the timer element.
+const score = document.getElementById('score'); 
+const timerDisplay = document.getElementById('timer'); 
 let startTime =10;
 let time;
 let timer;
@@ -14,7 +13,6 @@ let duration = 10;
 
 /**
  * Generates a random integer within a range.
- *
  * The function takes two values as parameters that limits the range 
  * of the number to be generated. For example, calling randomInteger(0,10)
  * will return a random integer between 0 and 10. Calling randomInteger(10,200)
@@ -27,11 +25,11 @@ function randomInteger(min, max) {
 
 
 function setDelay(difficulty, event) {
+  // sets delay for the moles to show up
   if (difficulty === "easy") return 1500;
   if (difficulty === "normal") return 1000;
   return randomInteger(600, 1200);
 }
-
 
 
 /**
@@ -43,16 +41,12 @@ function setDelay(difficulty, event) {
  * 3. if hole === lastHole then call chooseHole(holes) again.
  * 4. if hole is not the same as the lastHole then keep track of 
  * it (lastHole = hole) and return the hole
- *
- * Example: 
- * const holes = document.querySelectorAll('.hole');
- * chooseHole(holes) //> returns one of the 9 holes that you defined
  */
 
 function chooseHole(holes) {
-  // create var index and set it to randomInteger between 0 and 8
+  // var named index is set to randomInteger between 0 and 8
   const index = randomInteger(0, 8);
-  // create var named hole as an item in the holes array
+  // var named hole as an item in the holes array
   const hole = holes[index];
   // for loop: if hole equals the last hole, loop through the holes array again
   if (hole === lastHole) {
@@ -66,7 +60,6 @@ function chooseHole(holes) {
 /**
 *
 * Calls the showUp function if time > 0 and stops the game if time = 0.
-*
 * The purpose of this function is simply to determine if the game should
 * continue or stop. The game continues if there is still time `if(time > 0)`.
 * If there is still time then `showUp()` needs to be called again so that
@@ -85,28 +78,19 @@ function gameOver() {
     return gameStopped;
   }
 }
+
 /**
 *
 * Calls the showAndHide() function with a specific delay and a hole.
-*
 * This function simply calls the `showAndHide` function with a specific
 * delay and hole. The function needs to call `setDelay()` and `chooseHole()`
 * to call `showAndHide(hole, delay)`.
-*
 */
-// function showUp() {
-//   // Updated so it uses setDelay()
-//   let delay = setDelay(difficulty);
-//    // Updated it to use chooseHole()
-//   const hole = chooseHole(holes);
-//   return showAndHide(hole, delay);
-// }
 function showUp() {
   let delay = setDelay(difficulty);
   const hole = chooseHole(holes);
   return showAndHide(hole, delay);
 }
-
 
 /**
 *
@@ -117,13 +101,13 @@ function showUp() {
 *
 */
 function showAndHide(hole, delay){
-  // TODO: call the toggleVisibility function so that it adds the 'show' class.
+  // call the toggleVisibility function so that it adds the 'show' class.
   toggleVisibility(hole);
   const timeoutID = setTimeout(() => {
-    // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
+    // call the toggleVisibility function so that it removes the 'show' class when the timer times out.
     toggleVisibility(hole);
     gameOver();
-  }, delay); // TODO: change the setTimeout delay to the one provided as a parameter
+  }, delay); // change the setTimeout delay to the one provided as a parameter
   return timeoutID;
 }
 
@@ -134,7 +118,7 @@ function showAndHide(hole, delay){
 *
 */
 function toggleVisibility(hole){
-  // TODO: add hole.classList.toggle so that it adds or removes the 'show' class.
+  // hole.classList.toggle adds or removes the 'show' class.
   hole.classList.toggle("show");
   return hole;
 }
@@ -143,11 +127,7 @@ function toggleVisibility(hole){
 *
 * This function increments the points global variable and updates the scoreboard.
 * Use the `points` global variable that is already defined and increment it by 1.
-* After the `points` variable is incremented proceed by updating the scoreboard
-* that you defined in the `index.html` file. To update the scoreboard you can use 
-* `score.textContent = points;`. Use the comments in the function as a guide 
-* for your implementation:
-*
+* After the `points` variable is incremented, updates the scoreboard.
 */
 function updateScore() {
   points += 1;
@@ -191,7 +171,7 @@ function startTimer() {
 /**
 *
 * This is the event handler that gets called when a player
-* clicks on a mole. The setEventListeners should use this event
+* clicks on a mole. The setEventListeners use this event
 * handler (e.g. mole.addEventListener('click', whack)) for each of
 * the moles.
 *
@@ -204,8 +184,8 @@ function whack(event) {
 
 /**
 *
-* This function sets the duration of the game. The time limit, in seconds,
-* that a player has to click on the trolls.
+* This function sets the duration of the game to 10 seconds. Duration is the time limit, in seconds,
+* that a player has to click on the moles.
 *
 */
 function setDuration(duration) {
@@ -220,15 +200,14 @@ function setDuration(duration) {
 *
 */
 function stopGame() {
-  // stopAudio(song);  //optional  
+  // clear the timer
   clearInterval(timer);
   startButton.textContent = "game over!";
-  // gameOverTone.play();
+  // start button displays game over!
   setTimeout(() => {
     startButton.textContent = "START GAME";
     startButton.disabled = false;
     timerDisplay.textContent = duration;
-    clearScore();
   }, 2000);
   return "game stopped";
 }
@@ -237,20 +216,24 @@ function stopGame() {
 *
 * This is the function that starts the game when the `startButton`
 * is clicked.
-*
 */
 function startGame() {
-  setDuration(10);
+  // disable the start button so the timer can't restart while game is in progress
   startButton.disabled = true;
+  // start button text changes to git em! indicating game in progress
   startButton.textContent = "git em!";
+  // previous score is cleared to zero when new game starts
   clearScore();
   setEventListeners();
+  // duration time of the game is set to 10 seconds
   setDuration(duration);
+  // start the timer countdown
   startTimer();
+  // moles start showing up
   showUp();
   return "game started";
 }
-
+// start button eventListener
 startButton.addEventListener('click', startGame);
 
 /*
